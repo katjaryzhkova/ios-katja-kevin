@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AA2B875C80007409E9 /* HomescreenView.swift */; };
+		364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AD2B875CFB007409E9 /* CardView.swift */; };
+		36FEE5462B8763A5001DBDE4 /* CatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE5452B8763A5001DBDE4 /* CatAPI.swift */; };
+		36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */; };
+		36FEE54C2B876C60001DBDE4 /* SwipeGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */; };
+		36FEE54E2B876EFE001DBDE4 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */; };
 		C43A44912B839557004CE560 /* EindopdrachtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A44902B839557004CE560 /* EindopdrachtApp.swift */; };
 		C43A44932B839557004CE560 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A44922B839557004CE560 /* ContentView.swift */; };
 		C43A44952B83955A004CE560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43A44942B83955A004CE560 /* Assets.xcassets */; };
@@ -49,6 +55,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		364AC8AA2B875C80007409E9 /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
+		364AC8AD2B875CFB007409E9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		36FEE5452B8763A5001DBDE4 /* CatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPI.swift; sourceTree = "<group>"; };
+		36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureView.swift; sourceTree = "<group>"; };
+		36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		C43A448D2B839557004CE560 /* Eindopdracht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eindopdracht.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43A44902B839557004CE560 /* EindopdrachtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EindopdrachtApp.swift; sourceTree = "<group>"; };
 		C43A44922B839557004CE560 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -102,6 +114,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		364AC8AC2B875CE5007409E9 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				36FEE5432B87638A001DBDE4 /* ViewModel */,
+				364AC8AA2B875C80007409E9 /* HomescreenView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		36FEE5432B87638A001DBDE4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				36FEE5452B8763A5001DBDE4 /* CatAPI.swift */,
+				36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */,
+				36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		C43A44842B839557004CE560 = {
 			isa = PBXGroup;
 			children = (
@@ -151,6 +182,8 @@
 		C43A44A32B8395F1004CE560 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */,
+				364AC8AD2B875CFB007409E9 /* CardView.swift */,
 				C43A44AC2B8398F6004CE560 /* InputView.swift */,
 				C43A44B22B83ADF5004CE560 /* SettingsRowView.swift */,
 			);
@@ -160,6 +193,7 @@
 		C43A44A42B8396E9004CE560 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				364AC8AC2B875CE5007409E9 /* Home */,
 				C43A44A72B83979E004CE560 /* Authentication */,
 				C43A44A92B8397C4004CE560 /* Profile */,
 				C43A44A62B839732004CE560 /* Root */,
@@ -321,13 +355,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C43A44AB2B839814004CE560 /* LoginView.swift in Sources */,
+				36FEE54C2B876C60001DBDE4 /* SwipeGestureView.swift in Sources */,
 				C43A44AD2B8398F6004CE560 /* InputView.swift in Sources */,
 				C43A44932B839557004CE560 /* ContentView.swift in Sources */,
+				364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */,
 				C43A44912B839557004CE560 /* EindopdrachtApp.swift in Sources */,
 				C43A44B52B83B1F8004CE560 /* User.swift in Sources */,
+				36FEE5462B8763A5001DBDE4 /* CatAPI.swift in Sources */,
+				36FEE54E2B876EFE001DBDE4 /* AsyncImageView.swift in Sources */,
 				C43A44B12B83AA1D004CE560 /* ProfileView.swift in Sources */,
+				36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */,
 				C43A44AF2B83A637004CE560 /* RegistrationView.swift in Sources */,
 				C43A44B32B83ADF5004CE560 /* SettingsRowView.swift in Sources */,
+				364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */,
 				C43A44F22B84D7FC004CE560 /* AuthViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
