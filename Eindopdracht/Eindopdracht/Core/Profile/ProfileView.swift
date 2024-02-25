@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @EnvironmentObject var viewModel: AuthViewModel
+
     var body: some View {
         if let user = viewModel.currentUser {
             List {
@@ -65,5 +66,8 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    let auth = AuthViewModel()
+    auth.currentUser = User(id: "1", fullName: "Test Test", email: "test@gmail.com")
+    return ProfileView()
+        .environmentObject(auth)
 }
