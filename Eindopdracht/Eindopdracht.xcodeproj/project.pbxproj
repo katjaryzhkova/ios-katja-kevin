@@ -13,9 +13,9 @@
 		3612CDC92B8D114400C237B3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDC82B8D114400C237B3 /* HeaderView.swift */; };
 		364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AA2B875C80007409E9 /* HomescreenView.swift */; };
 		364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AD2B875CFB007409E9 /* CardView.swift */; };
+		367AC7A72B8D1F5B000BCE8E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367AC7A62B8D1F5B000BCE8E /* MapView.swift */; };
 		36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */; };
 		36FEE54C2B876C60001DBDE4 /* SwipeGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */; };
-		36FEE54E2B876EFE001DBDE4 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */; };
 		C43A44912B839557004CE560 /* EindopdrachtApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A44902B839557004CE560 /* EindopdrachtApp.swift */; };
 		C43A44952B83955A004CE560 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43A44942B83955A004CE560 /* Assets.xcassets */; };
 		C43A44982B83955A004CE560 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C43A44972B83955A004CE560 /* Preview Assets.xcassets */; };
@@ -68,9 +68,9 @@
 		3612CDC82B8D114400C237B3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		364AC8AA2B875C80007409E9 /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
 		364AC8AD2B875CFB007409E9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		367AC7A62B8D1F5B000BCE8E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureView.swift; sourceTree = "<group>"; };
-		36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		C43A448D2B839557004CE560 /* Eindopdracht.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eindopdracht.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C43A44902B839557004CE560 /* EindopdrachtApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EindopdrachtApp.swift; sourceTree = "<group>"; };
 		C43A44942B83955A004CE560 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -132,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */,
+				367AC7A62B8D1F5B000BCE8E /* MapView.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -139,7 +140,7 @@
 		364AC8AC2B875CE5007409E9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */,
+				36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */,
 				364AC8AA2B875C80007409E9 /* HomescreenView.swift */,
 				36FEE5432B87638A001DBDE4 /* ViewModel */,
 			);
@@ -204,7 +205,6 @@
 		C43A44A32B8395F1004CE560 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */,
 				364AC8AD2B875CFB007409E9 /* CardView.swift */,
 				C43A44AC2B8398F6004CE560 /* InputView.swift */,
 				C43A44B22B83ADF5004CE560 /* SettingsRowView.swift */,
@@ -394,6 +394,7 @@
 				C43A44AB2B839814004CE560 /* LoginView.swift in Sources */,
 				C47A71D02B8B34910080FA04 /* SideMenuHeaderView.swift in Sources */,
 				36FEE54C2B876C60001DBDE4 /* SwipeGestureView.swift in Sources */,
+				367AC7A72B8D1F5B000BCE8E /* MapView.swift in Sources */,
 				C47A71CE2B8B33390080FA04 /* SideMenuView.swift in Sources */,
 				3612CDC72B8D105700C237B3 /* TinderButtons.swift in Sources */,
 				C47A71D52B8B3B9E0080FA04 /* MenuOptionModel.swift in Sources */,
@@ -405,7 +406,6 @@
 				364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */,
 				C43A44912B839557004CE560 /* EindopdrachtApp.swift in Sources */,
 				C43A44B52B83B1F8004CE560 /* UserModel.swift in Sources */,
-				36FEE54E2B876EFE001DBDE4 /* AsyncImageView.swift in Sources */,
 				C43A44B12B83AA1D004CE560 /* ProfileView.swift in Sources */,
 				36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */,
 				C43A44AF2B83A637004CE560 /* RegistrationView.swift in Sources */,

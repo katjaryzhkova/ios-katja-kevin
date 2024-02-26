@@ -2,9 +2,9 @@ import SwiftUI
 
 struct SwipeGestureView<Content: View>: View {
     let content: Content
-    @Binding var currentIndex: Int
     let maxIndex: Int
     
+    @Binding var currentIndex: Int
     @State private var offset: CGSize = .zero
     
     init(currentIndex: Binding<Int>, maxIndex: Int, @ViewBuilder content: () -> Content) {

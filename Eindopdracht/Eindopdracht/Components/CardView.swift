@@ -15,14 +15,13 @@ struct CardView: View {
                     .frame(width: UIScreen.main.bounds.width - 40, height: 430)
                     .overlay(
                         VStack {
-                            if let catData = viewModel.catData,
-                               let url = URL(string: catData.url) {
-                                AsyncImageView(url: url)
+                            if let urlString = viewModel.catData?.url, let url = URL(string: urlString) {
+                                AsyncImage(url: url)
                                     .frame(width: UIScreen.main.bounds.width - 60, height: 320)
                                     .cornerRadius(20)
                                     .shadow(radius: 5)
                             } else {
-                                ProgressView() // Placeholder while loading
+                                ProgressView()
                                     .padding()
                             }
                             HStack {
@@ -52,9 +51,8 @@ struct CardView: View {
                     .frame(width: UIScreen.main.bounds.width - 300, height: 300)
                     .overlay(
                         VStack {
-                            if let catData = viewModel.catData,
-                               let url = URL(string: catData.url) {
-                                AsyncImageView(url: url)
+                            if let urlString = viewModel.catData?.url, let url = URL(string: urlString) {
+                                AsyncImage(url: url)
                                     .frame(width: UIScreen.main.bounds.width - 100, height: 250)
                                     .cornerRadius(20)
                                     .shadow(radius: 5)

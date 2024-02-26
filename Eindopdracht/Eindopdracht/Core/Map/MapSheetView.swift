@@ -3,8 +3,13 @@ import SwiftUI
 import MapKit
 
 struct MapSheetView: View {
+    
     let city: String
+    
     @State private var coordinate: CLLocationCoordinate2D?
+    
+    @Environment(\.presentationMode) var presentationMode
+    
     
     var body: some View {
         NavigationView {
@@ -22,11 +27,18 @@ struct MapSheetView: View {
                     ProgressView()
                 }
             }
+            .frame(height: 200)
+            .navigationBarItems(trailing: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Text("Back")
+            })
             .onAppear {
                 geocodeCity(city)
             }
         }
     }
+    
     
     func geocodeCity(_ city: String) {
         let geocoder = CLGeocoder()
@@ -44,20 +56,6 @@ struct MapSheetView: View {
     }
 }
 
-// Helper struct
-struct MapView: UIViewRepresentable {
-    var coordinate: CLLocationCoordinate2D
-    
-    func makeUIView(context: Context) -> MKMapView {
-        let mapView = MKMapView()
-        mapView.setRegion(MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000), animated: true)
-        return mapView
-    }
-    
-    func updateUIView(_ uiView: MKMapView, context: Context) {
-        // Update the map view if needed
-    }
-}
 
 #Preview {
     MapSheetView(city: "New York")

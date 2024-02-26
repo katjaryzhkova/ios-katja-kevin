@@ -32,12 +32,12 @@ struct TinderButtons: View {
             if let city = cardViewModel.userData?.location.city {
                 MapSheetView(city: city)
             } else {
-                Text("No city available")
+                MapSheetView(city: "New York")
             }
         }
         Button(action: {
             withAnimation {
-                currentIndex = (currentIndex - 1 + Int.max) % Int.max
+                currentIndex = (currentIndex - 1) % Int.max
             }
         }) {
             Image(systemName: "xmark")
