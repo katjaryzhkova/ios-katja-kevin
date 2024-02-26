@@ -53,6 +53,17 @@ struct HomescreenView: View {
                     SwipeGestureView(currentIndex: $currentIndex, maxIndex: Int.max) {
                         CardView(viewModel: cardViewModel)
                     }
+                    .onAppear {
+                        // Load initial data
+                        cardViewModel.loadCatData()
+                        cardViewModel.loadUserData()
+                    }
+                    .onChange(of: currentIndex) {
+                        // Load new data when index changes
+                        cardViewModel.loadCatData()
+                        cardViewModel.loadUserData()
+                    }
+                    
                 }
                 .padding(.horizontal, 16)
                 .padding(.bottom, 40)

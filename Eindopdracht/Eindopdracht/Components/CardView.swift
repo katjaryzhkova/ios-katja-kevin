@@ -39,10 +39,10 @@ struct CardView: View {
                     .cornerRadius(20)
                     .shadow(radius: 5)
                     .onAppear {
-                        viewModel.loadCatData() // Fetch new cat image when the view appears
+                        viewModel.loadCatData()
                     }
-                    .onChange(of: viewModel.userData?.name.first) { _ in
-                        viewModel.loadCatData() // Fetch new cat image when user data changes
+                    .onChange(of: viewModel.userData?.name.first) {
+                        viewModel.loadCatData()
                     }
             }
         } else {
@@ -76,10 +76,10 @@ struct CardView: View {
                     .cornerRadius(20)
                     .shadow(radius: 5)
                     .onAppear {
-                        viewModel.loadCatData() // Fetch new cat image when the view appears
+                        viewModel.loadCatData()
                     }
-                    .onChange(of: viewModel.userData?.name.first) { _ in
-                        viewModel.loadCatData() // Fetch new cat image when user data changes
+                    .onChange(of: viewModel.userData?.name.first) {
+                        viewModel.loadCatData()
                     }
             }
         }

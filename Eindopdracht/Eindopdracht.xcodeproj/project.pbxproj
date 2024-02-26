@@ -139,8 +139,9 @@
 		364AC8AC2B875CE5007409E9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				36FEE5432B87638A001DBDE4 /* ViewModel */,
+				36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */,
 				364AC8AA2B875C80007409E9 /* HomescreenView.swift */,
+				36FEE5432B87638A001DBDE4 /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -149,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */,
-				36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */,
 				3612CDBF2B8D077600C237B3 /* RandomPersonAPI.swift */,
 			);
 			path = ViewModel;

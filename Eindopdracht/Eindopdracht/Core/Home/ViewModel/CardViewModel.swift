@@ -29,7 +29,7 @@ class CardViewModel: ObservableObject {
                     self.catData = catData.first
                 }
             } catch {
-                print("ERROR: decoding failed: \(error.localizedDescription)")
+                print("ERROR: cat decoding failed: \(error.localizedDescription)")
             }
         }
         task.resume()
@@ -56,7 +56,7 @@ class CardViewModel: ObservableObject {
                     self.userData = userData.results.first
                 }
             } catch {
-                print("ERROR: decoding failed: \(error.localizedDescription)")
+                print("ERROR: user decoding failed: \(error.localizedDescription)")
             }
         }
         task.resume()
