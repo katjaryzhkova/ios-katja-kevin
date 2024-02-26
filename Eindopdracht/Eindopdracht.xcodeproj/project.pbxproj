@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3612CDC02B8D077600C237B3 /* RandomPersonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDBF2B8D077600C237B3 /* RandomPersonAPI.swift */; };
+		3612CDC52B8D0B8600C237B3 /* MapSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */; };
 		364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AA2B875C80007409E9 /* HomescreenView.swift */; };
 		364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AD2B875CFB007409E9 /* CardView.swift */; };
 		36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3612CDBF2B8D077600C237B3 /* RandomPersonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPersonAPI.swift; sourceTree = "<group>"; };
+		3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSheetView.swift; sourceTree = "<group>"; };
 		364AC8AA2B875C80007409E9 /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
 		364AC8AD2B875CFB007409E9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
@@ -120,6 +124,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3612CDC12B8D0AF100C237B3 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		364AC8AC2B875CE5007409E9 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +146,7 @@
 			children = (
 				36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */,
 				36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */,
+				3612CDBF2B8D077600C237B3 /* RandomPersonAPI.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -198,6 +211,7 @@
 		C43A44A42B8396E9004CE560 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				3612CDC12B8D0AF100C237B3 /* Map */,
 				C47A71D12B8B39EA0080FA04 /* Navigation */,
 				364AC8AC2B875CE5007409E9 /* Home */,
 				C43A44A72B83979E004CE560 /* Authentication */,
@@ -376,6 +390,7 @@
 				36FEE54C2B876C60001DBDE4 /* SwipeGestureView.swift in Sources */,
 				C47A71CE2B8B33390080FA04 /* SideMenuView.swift in Sources */,
 				C47A71D52B8B3B9E0080FA04 /* MenuOptionModel.swift in Sources */,
+				3612CDC02B8D077600C237B3 /* RandomPersonAPI.swift in Sources */,
 				C43A44AD2B8398F6004CE560 /* InputView.swift in Sources */,
 				C47A71D32B8B3AB70080FA04 /* SideMenuRowView.swift in Sources */,
 				C47A71D72B8B47880080FA04 /* ContentView.swift in Sources */,
@@ -387,6 +402,7 @@
 				36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */,
 				C43A44AF2B83A637004CE560 /* RegistrationView.swift in Sources */,
 				C43A44B32B83ADF5004CE560 /* SettingsRowView.swift in Sources */,
+				3612CDC52B8D0B8600C237B3 /* MapSheetView.swift in Sources */,
 				364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */,
 				C43A44F22B84D7FC004CE560 /* AuthViewModel.swift in Sources */,
 			);

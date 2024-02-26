@@ -6,8 +6,8 @@ struct HomescreenView: View {
     
     @StateObject var cardViewModel = CardViewModel()
     
-    let names = ["John Doe", "Alice", "Bob", "Emily", "David"]
     @State private var currentIndex: Int = 0
+    @State private var isShowingMapSheet = false
     
     var body: some View {
         // Prefered way of checking orientation of the device, within the if is the portrait mode
@@ -55,16 +55,23 @@ struct HomescreenView: View {
                             .padding()
                     }
                     Button(action: {
-                        // Action for the map button
+                        isShowingMapSheet = true
                     }) {
                         Image(systemName: "map")
                             .font(.system(size: 60))
                             .foregroundColor(.green)
                             .padding()
                     }
+                    .sheet(isPresented: $isShowingMapSheet) {
+                        if let city = cardViewModel.userData?.location.city {
+                            MapSheetView(city: city)
+                        } else {
+                            Text("No city available")
+                        }
+                    }
                     Button(action: {
                         withAnimation {
-                            currentIndex = (currentIndex - 1 + Int.max) % Int.max
+                            currentIndex = (currentIndex - 1) % Int.max
                         }
                     }) {
                         Image(systemName: "xmark")
@@ -108,12 +115,19 @@ struct HomescreenView: View {
                             .padding()
                     }
                     Button(action: {
-                        // Action for the map button
+                        isShowingMapSheet = true
                     }) {
                         Image(systemName: "map")
                             .font(.system(size: 60))
                             .foregroundColor(.green)
                             .padding()
+                    }
+                    .sheet(isPresented: $isShowingMapSheet) {
+                        if let city = cardViewModel.userData?.location.city {
+                            MapSheetView(city: city)
+                        } else {
+                            Text("No city available")
+                        }
                     }
                     Button(action: {
                         withAnimation {

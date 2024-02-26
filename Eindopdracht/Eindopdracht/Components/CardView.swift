@@ -1,7 +1,8 @@
 import SwiftUI
 
+
 struct CardView: View {
-    @StateObject var viewModel: CardViewModel
+    @ObservedObject var viewModel: CardViewModel
     
     @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
@@ -24,24 +25,25 @@ struct CardView: View {
                                 ProgressView() // Placeholder while loading
                                     .padding()
                             }
-                            if let userData = viewModel.userData {
-                                HStack {
-                                    Text(userData.name.first ?? "")
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .padding(.bottom, 5)
-                                    Text("-  \(userData.dob.age) years old")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
+                            HStack {
+                                Text(viewModel.userData?.name.first ?? "")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, 5)
+                                Text("-  \(viewModel.userData?.dob.age ?? 0) years old")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
                             }
                         }
                     )
                     .cornerRadius(20)
                     .shadow(radius: 5)
-            }
-            .onAppear {
-                viewModel.loadCatData()
+                    .onAppear {
+                        viewModel.loadCatData() // Fetch new cat image when the view appears
+                    }
+                    .onChange(of: viewModel.userData?.name.first) { _ in
+                        viewModel.loadCatData() // Fetch new cat image when user data changes
+                    }
             }
         } else {
             VStack {
@@ -60,24 +62,25 @@ struct CardView: View {
                                 ProgressView() // Placeholder while loading
                                     .padding()
                             }
-                            if let userData = viewModel.userData {
-                                HStack {
-                                    Text(userData.name.first ?? "")
-                                        .font(.title)
-                                        .fontWeight(.bold)
-                                        .padding(.bottom, 5)
-                                    Text("-  \(userData.dob.age) years old")
-                                        .font(.subheadline)
-                                        .foregroundColor(.gray)
-                                }
+                            HStack {
+                                Text(viewModel.userData?.name.first ?? "")
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .padding(.bottom, 5)
+                                Text("-  \(viewModel.userData?.dob.age ?? 0) years old")
+                                    .font(.subheadline)
+                                    .foregroundColor(.gray)
                             }
                         }
                     )
                     .cornerRadius(20)
                     .shadow(radius: 5)
-            }
-            .onAppear {
-                viewModel.loadCatData()
+                    .onAppear {
+                        viewModel.loadCatData() // Fetch new cat image when the view appears
+                    }
+                    .onChange(of: viewModel.userData?.name.first) { _ in
+                        viewModel.loadCatData() // Fetch new cat image when user data changes
+                    }
             }
         }
     }
