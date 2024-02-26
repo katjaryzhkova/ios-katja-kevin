@@ -1,47 +1,84 @@
 import SwiftUI
 
 struct CardView: View {
-    let name: String
-    let age: Int
     @StateObject var viewModel: CardViewModel
     
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
     var body: some View {
-        VStack {
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
-                .frame(width: UIScreen.main.bounds.width - 40, height: 430)
-                .overlay(
-                    VStack {
-                        if let catData = viewModel.catData,
-                           let url = URL(string: catData.url) {
-                            AsyncImageView(url: url)
-                                .frame(width: UIScreen.main.bounds.width - 60, height: 320)
-                                .cornerRadius(20)
-                                .shadow(radius: 5)
-                        } else {
-                            ProgressView() // Placeholder while loading
-                                .padding()
+        if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+            VStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.white)
+                    .frame(width: UIScreen.main.bounds.width - 40, height: 430)
+                    .overlay(
+                        VStack {
+                            if let catData = viewModel.catData,
+                               let url = URL(string: catData.url) {
+                                AsyncImageView(url: url)
+                                    .frame(width: UIScreen.main.bounds.width - 60, height: 320)
+                                    .cornerRadius(20)
+                                    .shadow(radius: 5)
+                            } else {
+                                ProgressView() // Placeholder while loading
+                                    .padding()
+                            }
+                            if let userData = viewModel.userData {
+                                HStack {
+                                    Text(userData.name.first ?? "")
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .padding(.bottom, 5)
+                                    Text("-  \(userData.dob.age) years old")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
-                        HStack {
-                            Text(name)
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding(.bottom, 5)
-                            Text("-  \(age) years old")
-                                .font(.subheadline)
-                                .foregroundColor(.gray)
+                    )
+                    .cornerRadius(20)
+                    .shadow(radius: 5)
+            }
+            .onAppear {
+                viewModel.loadCatData()
+            }
+        } else {
+            VStack {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(Color.white)
+                    .frame(width: UIScreen.main.bounds.width - 300, height: 300)
+                    .overlay(
+                        VStack {
+                            if let catData = viewModel.catData,
+                               let url = URL(string: catData.url) {
+                                AsyncImageView(url: url)
+                                    .frame(width: UIScreen.main.bounds.width - 100, height: 250)
+                                    .cornerRadius(20)
+                                    .shadow(radius: 5)
+                            } else {
+                                ProgressView() // Placeholder while loading
+                                    .padding()
+                            }
+                            if let userData = viewModel.userData {
+                                HStack {
+                                    Text(userData.name.first ?? "")
+                                        .font(.title)
+                                        .fontWeight(.bold)
+                                        .padding(.bottom, 5)
+                                    Text("-  \(userData.dob.age) years old")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
-                    }
-                )
-                .cornerRadius(20)
-                .shadow(radius: 5)
-        }
-        .onAppear {
-            viewModel.loadData()
+                    )
+                    .cornerRadius(20)
+                    .shadow(radius: 5)
+            }
+            .onAppear {
+                viewModel.loadCatData()
+            }
         }
     }
-}
-
-#Preview {
-    CardView(name: "John", age: 2, viewModel: CardViewModel())
 }

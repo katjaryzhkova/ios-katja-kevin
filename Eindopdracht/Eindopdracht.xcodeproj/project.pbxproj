@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AA2B875C80007409E9 /* HomescreenView.swift */; };
 		364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AD2B875CFB007409E9 /* CardView.swift */; };
-		36FEE5462B8763A5001DBDE4 /* CatAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE5452B8763A5001DBDE4 /* CatAPI.swift */; };
 		36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */; };
 		36FEE54C2B876C60001DBDE4 /* SwipeGestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */; };
 		36FEE54E2B876EFE001DBDE4 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */; };
@@ -61,7 +60,6 @@
 /* Begin PBXFileReference section */
 		364AC8AA2B875C80007409E9 /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
 		364AC8AD2B875CFB007409E9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		36FEE5452B8763A5001DBDE4 /* CatAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatAPI.swift; sourceTree = "<group>"; };
 		36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGestureView.swift; sourceTree = "<group>"; };
 		36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
@@ -134,7 +132,6 @@
 		36FEE5432B87638A001DBDE4 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				36FEE5452B8763A5001DBDE4 /* CatAPI.swift */,
 				36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */,
 				36FEE54D2B876EFE001DBDE4 /* AsyncImageView.swift */,
 			);
@@ -385,7 +382,6 @@
 				364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */,
 				C43A44912B839557004CE560 /* EindopdrachtApp.swift in Sources */,
 				C43A44B52B83B1F8004CE560 /* UserModel.swift in Sources */,
-				36FEE5462B8763A5001DBDE4 /* CatAPI.swift in Sources */,
 				36FEE54E2B876EFE001DBDE4 /* AsyncImageView.swift in Sources */,
 				C43A44B12B83AA1D004CE560 /* ProfileView.swift in Sources */,
 				36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */,

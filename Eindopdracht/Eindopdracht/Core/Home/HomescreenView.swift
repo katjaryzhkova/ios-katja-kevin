@@ -1,62 +1,139 @@
 import SwiftUI
 
 struct HomescreenView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
+    @StateObject var cardViewModel = CardViewModel()
+    
     let names = ["John Doe", "Alice", "Bob", "Emily", "David"]
     @State private var currentIndex: Int = 0
     
     var body: some View {
-        VStack {
-            HStack(spacing: 8) {
-                Image("cat-icon")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 120)
-                Text("Cat Tinder")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-            }
+        // Prefered way of checking orientation of the device, within the if is the portrait mode
+        if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+            VStack {
+                HStack(spacing: 8) {
+                    Image("cat-icon")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 120)
+                    Text("Cat Tinder")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.black)
+                }
                 .cornerRadius(20)
                 .shadow(radius: 5)
-            ZStack {
-                SwipeGestureView(currentIndex: $currentIndex, maxIndex: names.count - 1) {
-                    ForEach(names.indices, id: \.self) { index in
-                        CardView(name: names[index], age: Int.random(in: 0...20), viewModel: CardViewModel())
-                            .opacity(index == currentIndex ? 1 : 0)
+                ZStack {
+                    SwipeGestureView(currentIndex: $currentIndex, maxIndex: Int.max) {
+                        CardView(viewModel: cardViewModel)
+                    }
+                    .onAppear {
+                        // Load initial data
+                        cardViewModel.loadCatData()
+                        cardViewModel.loadUserData()
+                    }
+                    .onChange(of: currentIndex) { newValue in
+                        // Load new data when index changes
+                        cardViewModel.loadCatData()
+                        cardViewModel.loadUserData()
                     }
                 }
+                .padding(.horizontal, 16)
+                .padding(.bottom, 40)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            currentIndex = (currentIndex + 1) % Int.max
+                        }
+                    }) {
+                        Image(systemName: "heart.fill")
+                            .font(.system(size: 60))
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                    Button(action: {
+                        // Action for the map button
+                    }) {
+                        Image(systemName: "map")
+                            .font(.system(size: 60))
+                            .foregroundColor(.green)
+                            .padding()
+                    }
+                    Button(action: {
+                        withAnimation {
+                            currentIndex = (currentIndex - 1 + Int.max) % Int.max
+                        }
+                    }) {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 60))
+                            .foregroundColor(.blue)
+                            .padding()
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.bottom, 20)
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 40)
+        }
+        else {
             HStack {
-                Spacer()
-                Button(action: {
-                    withAnimation {
-                        currentIndex = (currentIndex + 1) % names.count
-                    }
-                }) {
-                    Image(systemName: "heart.fill")
-                        .font(.system(size: 60))
-                        .foregroundColor(.red)
-                        .padding()
+                HStack(spacing: 8) {
+                    Image("cat-icon")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 120)
                 }
-                Button(action: {
-                    withAnimation {
-                        currentIndex = (currentIndex - 1 + names.count) % names.count
+                .cornerRadius(20)
+                .shadow(radius: 5)
+                ZStack {
+                    SwipeGestureView(currentIndex: $currentIndex, maxIndex: Int.max) {
+                        CardView(viewModel: cardViewModel)
                     }
-                }) {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 60))
-                        .foregroundColor(.blue)
-                        .padding()
                 }
-                
-                Spacer()
+                .padding(.horizontal, 16)
+                .padding(.bottom, 40)
+                VStack {
+                    Spacer()
+                    Button(action: {
+                        withAnimation {
+                            currentIndex = (currentIndex + 1) % Int.max
+                        }
+                    }) {
+                        Image(systemName: "heart.fill")
+                            .font(.system(size: 60))
+                            .foregroundColor(.red)
+                            .padding()
+                    }
+                    Button(action: {
+                        // Action for the map button
+                    }) {
+                        Image(systemName: "map")
+                            .font(.system(size: 60))
+                            .foregroundColor(.green)
+                            .padding()
+                    }
+                    Button(action: {
+                        withAnimation {
+                            currentIndex = (currentIndex - 1 + Int.max) % Int.max
+                        }
+                    }) {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 60))
+                            .foregroundColor(.blue)
+                            .padding()
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.bottom, 20)
             }
-            .padding(.bottom, 20)
         }
     }
 }
+
 
 
 #Preview {
