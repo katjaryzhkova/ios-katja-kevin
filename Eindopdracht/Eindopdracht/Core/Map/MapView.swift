@@ -4,11 +4,11 @@ import MapKit
 
 
 struct MapView: UIViewRepresentable {
-    var coordinate: CLLocationCoordinate2D
+    var coordinates: CLLocationCoordinate2D
     
     func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
-        mapView.setRegion(MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000), animated: true)
+        mapView.setRegion(MKCoordinateRegion(center: coordinates, latitudinalMeters: 10000, longitudinalMeters: 10000), animated: true)
         return mapView
     }
     

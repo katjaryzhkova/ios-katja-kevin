@@ -29,7 +29,7 @@ struct CardView: View {
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .padding(.bottom, 5)
-                                Text("-  \(viewModel.userData?.dob.age ?? 0) years old")
+                                Text("-  \(Int((viewModel.userData?.dob.age ?? 0) / 8)) years old")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -48,12 +48,12 @@ struct CardView: View {
             VStack {
                 RoundedRectangle(cornerRadius: 20)
                     .fill(Color.white)
-                    .frame(width: UIScreen.main.bounds.width - 300, height: 300)
+                    .frame(width: UIScreen.main.bounds.width - 300, height: UIScreen.main.bounds.height - 40)
                     .overlay(
                         VStack {
                             if let urlString = viewModel.catData?.url, let url = URL(string: urlString) {
                                 AsyncImage(url: url)
-                                    .frame(width: UIScreen.main.bounds.width - 100, height: 250)
+                                    .frame(width: UIScreen.main.bounds.width - 320, height: UIScreen.main.bounds.height - 80)
                                     .cornerRadius(20)
                                     .shadow(radius: 5)
                             } else {
@@ -64,8 +64,7 @@ struct CardView: View {
                                 Text(viewModel.userData?.name.first ?? "")
                                     .font(.title)
                                     .fontWeight(.bold)
-                                    .padding(.bottom, 5)
-                                Text("-  \(viewModel.userData?.dob.age ?? 0) years old")
+                                Text("-  \(Int((viewModel.userData?.dob.age ?? 0) / 8)) years old")
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }

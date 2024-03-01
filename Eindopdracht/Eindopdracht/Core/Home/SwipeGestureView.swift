@@ -26,8 +26,10 @@ struct SwipeGestureView<Content: View>: View {
                             let threshold: CGFloat = 100
                             if offset.width > threshold && currentIndex > 0 {
                                 currentIndex -= 1
+                                AudioPlayer.playDislikeSound()
                             } else if offset.width < -threshold && currentIndex < maxIndex {
                                 currentIndex += 1
+                                AudioPlayer.playLikeSound()
                             }
                             offset = .zero
                         }

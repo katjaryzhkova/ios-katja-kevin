@@ -59,6 +59,9 @@
 		C47A71D32B8B3AB70080FA04 /* SideMenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A71D22B8B3AB70080FA04 /* SideMenuRowView.swift */; };
 		C47A71D52B8B3B9E0080FA04 /* MenuOptionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A71D42B8B3B9D0080FA04 /* MenuOptionModel.swift */; };
 		C47A71D72B8B47880080FA04 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47A71D62B8B47880080FA04 /* ContentView.swift */; };
+		C4E88BE22B8F373C00E7571B /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E88BE12B8F373C00E7571B /* EditProfileView.swift */; };
+		C4EDB0962B90B003007DEE3B /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EDB0952B90B003007DEE3B /* LocationManager.swift */; };
+		C4EDB09C2B92177C007DEE3B /* AudioPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4EDB09B2B92177C007DEE3B /* AudioPlayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,9 @@
 		C47A71D22B8B3AB70080FA04 /* SideMenuRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuRowView.swift; sourceTree = "<group>"; };
 		C47A71D42B8B3B9D0080FA04 /* MenuOptionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionModel.swift; sourceTree = "<group>"; };
 		C47A71D62B8B47880080FA04 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C4E88BE12B8F373C00E7571B /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		C4EDB0952B90B003007DEE3B /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		C4EDB09B2B92177C007DEE3B /* AudioPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +139,7 @@
 			children = (
 				3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */,
 				367AC7A62B8D1F5B000BCE8E /* MapView.swift */,
+				C4EDB0952B90B003007DEE3B /* LocationManager.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -142,6 +149,7 @@
 			children = (
 				36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */,
 				364AC8AA2B875C80007409E9 /* HomescreenView.swift */,
+				C4EDB09B2B92177C007DEE3B /* AudioPlayer.swift */,
 				36FEE5432B87638A001DBDE4 /* ViewModel */,
 			);
 			path = Home;
@@ -257,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				C43A44B02B83AA1C004CE560 /* ProfileView.swift */,
+				C4E88BE12B8F373C00E7571B /* EditProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -403,13 +412,16 @@
 				C43A44AD2B8398F6004CE560 /* InputView.swift in Sources */,
 				C47A71D32B8B3AB70080FA04 /* SideMenuRowView.swift in Sources */,
 				C47A71D72B8B47880080FA04 /* ContentView.swift in Sources */,
+				C4EDB09C2B92177C007DEE3B /* AudioPlayer.swift in Sources */,
 				364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */,
 				C43A44912B839557004CE560 /* EindopdrachtApp.swift in Sources */,
 				C43A44B52B83B1F8004CE560 /* UserModel.swift in Sources */,
 				C43A44B12B83AA1D004CE560 /* ProfileView.swift in Sources */,
 				36FEE54A2B876A5F001DBDE4 /* CardViewModel.swift in Sources */,
 				C43A44AF2B83A637004CE560 /* RegistrationView.swift in Sources */,
+				C4E88BE22B8F373C00E7571B /* EditProfileView.swift in Sources */,
 				C43A44B32B83ADF5004CE560 /* SettingsRowView.swift in Sources */,
+				C4EDB0962B90B003007DEE3B /* LocationManager.swift in Sources */,
 				3612CDC52B8D0B8600C237B3 /* MapSheetView.swift in Sources */,
 				364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */,
 				C43A44F22B84D7FC004CE560 /* AuthViewModel.swift in Sources */,
@@ -549,6 +561,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "We use location data to find your distance to the cats.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use location data to find your distance to the cats.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -578,6 +592,8 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationUsageDescription = "We use location data to find your distance to the cats.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We use location data to find your distance to the cats.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

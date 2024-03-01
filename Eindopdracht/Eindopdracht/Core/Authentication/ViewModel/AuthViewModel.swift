@@ -1,5 +1,6 @@
 import Foundation
 import Firebase
+import FirebaseAuth
 import FirebaseFirestoreSwift
 
 protocol AuthenticationFormProtocol {
@@ -42,6 +43,21 @@ class AuthViewModel:ObservableObject {
         }
     }
     
+    func updateUserInfo(currentPassword: String, newPassword: String, fullName: String) async throws {
+        do {
+            let currentUser = Auth.auth().currentUser
+            let credential = EmailAuthProvider.credential(withEmail: currentUser?.email ?? "", password: currentPassword)
+            try await currentUser?.reauthenticate(with: credential)
+            try await currentUser?.updatePassword(to: newPassword)
+            try await Firestore.firestore().collection("users").document(self.userSession?.uid ?? "").updateData([
+                "fullName": fullName,
+            ])
+            self.currentUser = User(id: currentUser?.uid ?? "",fullName: fullName, email: currentUser?.email ?? "")
+        } catch {
+            print("DEBUG: Failed to edit user with error \(error.localizedDescription)")
+        }
+    }
+    
     func signOut() {
         do {
             try Auth.auth().signOut() // signs out user on backend
@@ -52,8 +68,19 @@ class AuthViewModel:ObservableObject {
         }
     }
     
-    func deleteAccount() {
-        // todo
+    func deleteAccount(password: String) async {
+        do {
+            let uid = self.userSession?.uid ?? ""
+            let currentUser = Auth.auth().currentUser
+            let credential = EmailAuthProvider.credential(withEmail: currentUser?.email ?? "", password: password)
+            try await currentUser?.reauthenticate(with: credential)
+            try await currentUser?.delete()
+            try await Firestore.firestore().collection("users").document(uid).delete()
+            self.userSession = nil
+            self.currentUser = nil
+        } catch {
+            print("DEBUG: Failed to delete user with error \(error.localizedDescription)")
+        }
     }
     
     func fetchUser() async {

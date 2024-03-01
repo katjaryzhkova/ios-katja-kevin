@@ -1,28 +1,33 @@
-
 import SwiftUI
 import MapKit
 
 struct MapSheetView: View {
-    
-    let city: String
-    
-    @State private var coordinate: CLLocationCoordinate2D?
-    
+    @State var city: String
+    @State private var coordinates: CLLocationCoordinate2D?
+
+    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
     @Environment(\.presentationMode) var presentationMode
     
-    
+    @StateObject var locationManager = LocationManager()
+
     var body: some View {
         NavigationView {
             VStack {
-                if let coordinate = coordinate {
+                if let coordinates = coordinates {
                     RoundedRectangle(cornerRadius: 20)
                         .fill(Color.white)
-                        .frame(width: UIScreen.main.bounds.width - 40, height: 430)
+                        .frame(
+                            width: UIScreen.main.bounds.width - 40,
+                            height: horizontalSizeClass == .compact && verticalSizeClass == .regular ? UIScreen.main.bounds.height - 200 : UIScreen.main.bounds.height - 80
+                        )
                         .overlay(
-                            MapView(coordinate: coordinate)
+                            MapView(coordinates: coordinates)
                         )
                         .cornerRadius(20)
                         .shadow(radius: 5)
+                    
+                    Text(locationManager.getLocationString(city: city, coordinates: coordinates))
                 } else {
                     ProgressView()
                 }
@@ -38,19 +43,14 @@ struct MapSheetView: View {
             }
         }
     }
-    
-    
+
     func geocodeCity(_ city: String) {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(city) { placemarks, error in
-            if let error = error {
-                print("Geocoding failed with error: \(error.localizedDescription)")
-                return
-            }
-            if let placemark = placemarks?.first, let location = placemark.location {
-                coordinate = location.coordinate
-            } else {
-                print("No location found for the city: \(city)")
+            coordinates = placemarks?.first?.location?.coordinate
+            if coordinates == nil {
+                coordinates = CLLocationCoordinate2D(latitude: 40.730610, longitude: -73.935242)
+                self.city = "New York"
             }
         }
     }

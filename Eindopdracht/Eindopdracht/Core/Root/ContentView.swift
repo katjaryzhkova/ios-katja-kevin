@@ -26,6 +26,7 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button(action: {
+                            AudioPlayer.playGenericButtonSound()
                             showMenu.toggle()
                         }, label: {
                             Image(systemName: "line.3.horizontal")

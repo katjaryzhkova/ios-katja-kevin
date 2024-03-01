@@ -20,6 +20,7 @@ struct SideMenuView: View {
                         VStack {
                             ForEach(SideMenuOptionModel.allCases) { option in
                                 Button(action: {
+                                    AudioPlayer.playGenericButtonSound()
                                     onOptionTapped(option)
                                 }, label: {
                                     SideMenuRowView(option: option, selectedOption: $selectedOption)

@@ -57,14 +57,10 @@ struct HomescreenView: View {
                     }
                     
                 }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 40)
                 VStack {
                     Spacer()
                     TinderButtons(currentIndex: $currentIndex, isShowingMapSheet: $isShowingMapSheet, cardViewModel: cardViewModel)
-                        .padding(.bottom, 20)
                 }
-                .padding(.bottom, 20)
             }
         }
     }

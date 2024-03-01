@@ -1,4 +1,3 @@
-
 import SwiftUI
 
 struct TinderButtons: View {
@@ -11,6 +10,7 @@ struct TinderButtons: View {
     var body: some View {
         Spacer()
         Button(action: {
+            AudioPlayer.playLikeSound()
             withAnimation {
                 currentIndex = (currentIndex + 1) % Int.max
             }
@@ -21,6 +21,7 @@ struct TinderButtons: View {
                 .padding()
         }
         Button(action: {
+            AudioPlayer.playGenericButtonSound()
             isShowingMapSheet = true
         }) {
             Image(systemName: "map")
@@ -36,6 +37,7 @@ struct TinderButtons: View {
             }
         }
         Button(action: {
+            AudioPlayer.playDislikeSound()
             withAnimation {
                 currentIndex = (currentIndex - 1) % Int.max
             }
