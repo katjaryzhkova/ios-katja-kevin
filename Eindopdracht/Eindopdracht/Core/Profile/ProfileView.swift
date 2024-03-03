@@ -1,9 +1,25 @@
 import SwiftUI
 
+/**
+ This view displays the user's profile and allows the user to sign out as well as
+ edit or delete their account.
+ */
 struct ProfileView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
+    /**
+     Whether the confirm account deletion alert is currently being displayed or not.
+     */
     @State private var deletingAccountAlert = false
+    
+    /**
+     The current password which is being input by the user. This password is required to
+     confirm the user's identity in order to delete the account.
+     */
     @State private var password = ""
+    
+    /**
+     The ``AuthViewModel`` is responsible for keeping track of the currently signed in user.
+     */
+    @EnvironmentObject var viewModel: AuthViewModel
 
     var body: some View {
         NavigationView {
@@ -97,7 +113,7 @@ struct ProfileView: View {
         
 #Preview {
     let auth = AuthViewModel()
-    auth.currentUser = User(id: "1", fullName: "Test Test", email: "test@gmail.com")
+    auth.currentUser = User.mockUser
     return ProfileView()
         .environmentObject(auth)
 }

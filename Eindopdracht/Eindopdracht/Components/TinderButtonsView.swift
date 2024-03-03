@@ -1,22 +1,32 @@
 import SwiftUI
 
-struct TinderButtons: View {
-    @Binding var currentIndex: Int
+/**
+ The three buttons displayed below the cat's profile (like, dislike, and map)
+ */
+struct TinderButtonsView: View {
+    /**
+     Whether the map is currently being displayed.
+     */
     @Binding var isShowingMapSheet: Bool
+    
+    /**
+     The currently displayed cat profile.
+     */
     @ObservedObject var cardViewModel: CardViewModel
     
-    let FONTSIZE: CGFloat = 60
+    /**
+     The size of the buttons.
+     */
+    private let buttonSize: CGFloat = 60
     
     var body: some View {
         Spacer()
         Button(action: {
+            cardViewModel.newCat()
             AudioPlayer.playLikeSound()
-            withAnimation {
-                currentIndex = (currentIndex + 1) % Int.max
-            }
         }) {
             Image(systemName: "heart.fill")
-                .font(.system(size: FONTSIZE))
+                .font(.system(size: buttonSize))
                 .foregroundColor(.red)
                 .padding()
         }
@@ -25,7 +35,7 @@ struct TinderButtons: View {
             isShowingMapSheet = true
         }) {
             Image(systemName: "map")
-                .font(.system(size: FONTSIZE))
+                .font(.system(size: buttonSize))
                 .foregroundColor(.green)
                 .padding()
         }
@@ -37,13 +47,11 @@ struct TinderButtons: View {
             }
         }
         Button(action: {
+            cardViewModel.newCat()
             AudioPlayer.playDislikeSound()
-            withAnimation {
-                currentIndex = (currentIndex - 1) % Int.max
-            }
         }) {
             Image(systemName: "xmark")
-                .font(.system(size: FONTSIZE))
+                .font(.system(size: buttonSize))
                 .foregroundColor(.blue)
                 .padding()
         }

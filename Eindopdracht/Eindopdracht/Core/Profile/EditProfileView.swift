@@ -1,11 +1,34 @@
 import SwiftUI
 
+/**
+ A view where the user can edit their profile.
+ */
 struct EditProfileView: View {
-    @EnvironmentObject var viewModel: AuthViewModel
-    @Environment(\.dismiss) var dismiss
+    /**
+     The full name which is being input by the user.
+     */
     @State private var fullName = ""
+    
+    /**
+     The current password which is being input by the user. This password is required to
+     confirm the user's identity in order to update the user's profile.
+     */
     @State private var currentPassword = ""
+    
+    /**
+     The new password which is being input by the user.
+     */
     @State private var newPassword = ""
+    
+    /**
+     The dismiss property is used to navigate back from the edit page to the profile page.
+     */
+    @Environment(\.dismiss) var dismiss
+    
+    /**
+     The ``AuthViewModel`` is responsible for keeping track of the currently signed in user.
+     */
+    @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
         NavigationView {
@@ -33,7 +56,7 @@ struct EditProfileView: View {
                 Button {
                     AudioPlayer.playGenericButtonSound()
                     Task {
-                        try await viewModel.updateUserInfo(currentPassword: currentPassword, newPassword: newPassword, fullName: fullName)
+                        await viewModel.updateUserInfo(currentPassword: currentPassword, newPassword: newPassword, fullName: fullName)
                         dismiss()
                     }
                 } label: {
@@ -58,7 +81,13 @@ struct EditProfileView: View {
             
 // MARK: - AuthenticationFormProtocol
 
+/**
+ Form validation for the edit profile form.
+ */
 extension EditProfileView: AuthenticationFormProtocol {
+    /**
+     Checks whether the values in the form are valid or not.
+     */
     var formIsValid: Bool {
         return !currentPassword.isEmpty
         && !newPassword.isEmpty
@@ -70,7 +99,7 @@ extension EditProfileView: AuthenticationFormProtocol {
 
 #Preview {
     let auth = AuthViewModel()
-    auth.currentUser = User(id: "1", fullName: "Test Test", email: "test@gmail.com")
+    auth.currentUser = User.mockUser
     return EditProfileView()
         .environmentObject(auth)
 }

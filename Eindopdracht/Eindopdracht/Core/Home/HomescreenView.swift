@@ -1,41 +1,43 @@
 import SwiftUI
 
+/**
+ The main application view composed of a cat's profile as well as the
+ three interaction buttons (like, dislike, and show location).
+ */
 struct HomescreenView: View {
-    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    /**
+     Used to determine whether the phone is in landscape or portrait mode.
+     */
+    @Environment(\.verticalSizeClass) var sizeClass: UserInterfaceSizeClass?
     
+    /**
+     The currently displayed cat profile.
+     */
     @StateObject var cardViewModel = CardViewModel()
-    
-    @State private var currentIndex: Int = 0
+        
+    /**
+     Whether the map is currently being displayed or not.
+     */
     @State private var isShowingMapSheet = false
     
     var body: some View {
-        // Prefered way of checking orientation of the device, within the if is the portrait mode
-        if horizontalSizeClass == .compact && verticalSizeClass == .regular {
+        // Portrait mode
+        if sizeClass == .regular {
             VStack {
                 HeaderView()
                 ZStack {
-                    SwipeGestureView(currentIndex: $currentIndex, maxIndex: Int.max) {
-                        CardView(viewModel: cardViewModel)
-                    }
-                    .onAppear {
-                        cardViewModel.loadUserData()
-                    }
-                    .onChange(of: currentIndex) {
-                        cardViewModel.loadUserData()
-                    }
-                    
+                    SwipeGestureView(cardViewModel: cardViewModel)
                 }
-                .padding(.horizontal, 16)
-                .padding(.bottom, 40)
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 40)
                 HStack {
-                    TinderButtons(currentIndex: $currentIndex, isShowingMapSheet: $isShowingMapSheet, cardViewModel: cardViewModel)
+                    TinderButtonsView(isShowingMapSheet: $isShowingMapSheet, cardViewModel: cardViewModel)
                         .padding(.bottom, 20)
                 }
-                .padding(.bottom, 20)
+                    .padding(.bottom, 20)
             }
-        }
-        else {
+        // Landscape mode
+        } else {
             HStack {
                 HStack(spacing: 8) {
                     Image("cat-icon")
@@ -43,23 +45,13 @@ struct HomescreenView: View {
                         .scaledToFill()
                         .frame(width: 100, height: 120)
                 }
-                .cornerRadius(20)
-                .shadow(radius: 5)
+                    .cornerRadius(20)
+                    .shadow(radius: 5)
                 ZStack {
-                    SwipeGestureView(currentIndex: $currentIndex, maxIndex: Int.max) {
-                        CardView(viewModel: cardViewModel)
-                    }
-                    .onAppear {
-                        cardViewModel.loadUserData()
-                    }
-                    .onChange(of: currentIndex) {
-                        cardViewModel.loadUserData()
-                    }
-                    
+                    SwipeGestureView(cardViewModel: cardViewModel)
                 }
                 VStack {
-                    Spacer()
-                    TinderButtons(currentIndex: $currentIndex, isShowingMapSheet: $isShowingMapSheet, cardViewModel: cardViewModel)
+                    TinderButtonsView(isShowingMapSheet: $isShowingMapSheet, cardViewModel: cardViewModel)
                 }
             }
         }

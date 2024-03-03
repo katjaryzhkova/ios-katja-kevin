@@ -1,11 +1,28 @@
 import SwiftUI
 
+/**
+ This view is displayed when the user has not yet logged in.
+ */
 struct LoginView: View {
+    /**
+     The email which is being input by the user.
+     */
     @State private var email = ""
+    
+    /**
+     The password which is being input by the user.
+     */
     @State private var password = ""
+    
+    /**
+     The ``AuthViewModel`` is responsible for keeping track of the currently signed in user.
+     */
     @EnvironmentObject var viewModel: AuthViewModel
-    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
+    /**
+     Used to determine whether the phone is in landscape or portrait mode.
+     */
+    @Environment(\.verticalSizeClass) var sizeClass: UserInterfaceSizeClass?
     
     var body: some View {
         NavigationStack {
@@ -37,7 +54,6 @@ struct LoginView: View {
                     Button {
                         AudioPlayer.playGenericButtonSound()
                         Task {
-                            try
                             await viewModel.signIn(withEmail: email, password: password)
                         }
                         
@@ -49,7 +65,7 @@ struct LoginView: View {
                             
                         }
                         .foregroundColor(.white)
-                        .frame(width: UIScreen.main.bounds.width / (horizontalSizeClass == .compact && verticalSizeClass == .regular ? 1 : 2.5) - 32, height: 48)
+                        .frame(width: UIScreen.main.bounds.width / (sizeClass == .regular ? 1 : 2.5) - 32, height: 48)
                     }
                     .background(Color(.systemBlue))
                     .disabled(!formIsValid)
@@ -81,7 +97,13 @@ struct LoginView: View {
 
 // MARK: - AuthenticationFormProtocol
 
+/**
+ Form validation for the log in form.
+ */
 extension LoginView: AuthenticationFormProtocol {
+    /**
+     Checks whether the values in the form are valid or not.
+     */
     var formIsValid: Bool {
         return !email.isEmpty
         && email.contains("@")

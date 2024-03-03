@@ -1,6 +1,12 @@
 import SwiftUI
 
+/**
+ The navigation menu's header displaying the user's information.
+ */
 struct SideMenuHeaderView: View {
+    /**
+     The ``AuthViewModel`` is responsible for keeping track of the currently signed in user.
+     */
     @EnvironmentObject var viewModel: AuthViewModel
 
     var body: some View {
@@ -29,7 +35,7 @@ struct SideMenuHeaderView: View {
 
 #Preview {
     let auth = AuthViewModel()
-    auth.currentUser = User(id: "1", fullName: "Test Test", email: "test@gmail.com")
+    auth.currentUser = User.mockUser
     return SideMenuHeaderView()
         .environmentObject(auth)
 }

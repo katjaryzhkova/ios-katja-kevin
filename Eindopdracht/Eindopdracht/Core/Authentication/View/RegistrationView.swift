@@ -1,13 +1,44 @@
 import SwiftUI
 
+/**
+ This view is displayed when the user has not yet logged in and
+ wishes to create a new account.
+ */
 struct RegistrationView: View {
+    /**
+     The email which is being input by the user.
+     */
     @State private var email = ""
+    
+    /**
+     The full name which is being input by the user.
+     */
     @State private var fullName = ""
+    
+    /**
+     The password which is being input by the user.
+     */
     @State private var password = ""
+    
+    /**
+     The password which is being input by the user a second
+     time to ensure the user did not make a typo.
+     */
     @State private var confirmPassword = ""
-    @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+    
+    /**
+     Used to determine whether the phone is in landscape or portrait mode.
+     */
+    @Environment(\.verticalSizeClass) var sizeClass: UserInterfaceSizeClass?
+    
+    /**
+     The dismiss property is used to navigate back from the registration page to the login page.
+     */
     @Environment(\.dismiss) var dismiss
+    
+    /**
+     The ``AuthViewModel`` is responsible for keeping track of the currently signed in user.
+     */
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
@@ -70,7 +101,7 @@ struct RegistrationView: View {
                 Button {
                     AudioPlayer.playGenericButtonSound()
                     Task {
-                        try await viewModel.createUser(withEmail: email,
+                        await viewModel.createUser(withEmail: email,
                                                        password: password,
                                                        fullName: fullName)
                     }
@@ -82,7 +113,7 @@ struct RegistrationView: View {
                         
                     }
                     .foregroundColor(.white)
-                    .frame(width: UIScreen.main.bounds.width / (horizontalSizeClass == .compact && verticalSizeClass == .regular ? 1 : 2.5) - 32, height: 48)
+                    .frame(width: UIScreen.main.bounds.width / (sizeClass == .regular ? 1 : 2.5) - 32, height: 48)
                 }
                 .background(Color(.systemBlue))
                 .disabled(!formIsValid)
@@ -109,7 +140,13 @@ struct RegistrationView: View {
 
 // MARK: - AuthenticationFormProtocol
 
+/**
+ Form validation for the sign up form.
+ */
 extension RegistrationView: AuthenticationFormProtocol {
+    /**
+     Checks whether the values in the form are valid or not.
+     */
     var formIsValid: Bool {
         return !email.isEmpty
         && email.contains("@")

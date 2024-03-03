@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3612CDC02B8D077600C237B3 /* RandomPersonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDBF2B8D077600C237B3 /* RandomPersonAPI.swift */; };
+		3612CDC02B8D077600C237B3 /* RandomPersonAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDBF2B8D077600C237B3 /* RandomPersonAPIModel.swift */; };
 		3612CDC52B8D0B8600C237B3 /* MapSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */; };
-		3612CDC72B8D105700C237B3 /* TinderButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDC62B8D105700C237B3 /* TinderButtons.swift */; };
+		3612CDC72B8D105700C237B3 /* TinderButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDC62B8D105700C237B3 /* TinderButtonsView.swift */; };
 		3612CDC92B8D114400C237B3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3612CDC82B8D114400C237B3 /* HeaderView.swift */; };
 		364AC8AB2B875C80007409E9 /* HomescreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AA2B875C80007409E9 /* HomescreenView.swift */; };
 		364AC8AE2B875CFB007409E9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364AC8AD2B875CFB007409E9 /* CardView.swift */; };
@@ -65,9 +65,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3612CDBF2B8D077600C237B3 /* RandomPersonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPersonAPI.swift; sourceTree = "<group>"; };
+		3612CDBF2B8D077600C237B3 /* RandomPersonAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomPersonAPIModel.swift; sourceTree = "<group>"; };
 		3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSheetView.swift; sourceTree = "<group>"; };
-		3612CDC62B8D105700C237B3 /* TinderButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderButtons.swift; sourceTree = "<group>"; };
+		3612CDC62B8D105700C237B3 /* TinderButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderButtonsView.swift; sourceTree = "<group>"; };
 		3612CDC82B8D114400C237B3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		364AC8AA2B875C80007409E9 /* HomescreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomescreenView.swift; sourceTree = "<group>"; };
 		364AC8AD2B875CFB007409E9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -139,7 +139,6 @@
 			children = (
 				3612CDC42B8D0B8600C237B3 /* MapSheetView.swift */,
 				367AC7A62B8D1F5B000BCE8E /* MapView.swift */,
-				C4EDB0952B90B003007DEE3B /* LocationManager.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -149,7 +148,6 @@
 			children = (
 				36FEE54B2B876C60001DBDE4 /* SwipeGestureView.swift */,
 				364AC8AA2B875C80007409E9 /* HomescreenView.swift */,
-				C4EDB09B2B92177C007DEE3B /* AudioPlayer.swift */,
 				36FEE5432B87638A001DBDE4 /* ViewModel */,
 			);
 			path = Home;
@@ -159,7 +157,6 @@
 			isa = PBXGroup;
 			children = (
 				36FEE5492B876A5F001DBDE4 /* CardViewModel.swift */,
-				3612CDBF2B8D077600C237B3 /* RandomPersonAPI.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -184,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				C43A44A22B83958F004CE560 /* App */,
+				C4EDB0A52B94B38D007DEE3B /* Tools */,
 				C43A44A32B8395F1004CE560 /* Components */,
 				C43A44A42B8396E9004CE560 /* Core */,
 				C43A44A52B839701004CE560 /* Model */,
@@ -216,7 +214,7 @@
 				364AC8AD2B875CFB007409E9 /* CardView.swift */,
 				C43A44AC2B8398F6004CE560 /* InputView.swift */,
 				C43A44B22B83ADF5004CE560 /* SettingsRowView.swift */,
-				3612CDC62B8D105700C237B3 /* TinderButtons.swift */,
+				3612CDC62B8D105700C237B3 /* TinderButtonsView.swift */,
 				3612CDC82B8D114400C237B3 /* HeaderView.swift */,
 			);
 			path = Components;
@@ -240,6 +238,7 @@
 			children = (
 				C43A44B42B83B1F8004CE560 /* UserModel.swift */,
 				C47A71D42B8B3B9D0080FA04 /* MenuOptionModel.swift */,
+				3612CDBF2B8D077600C237B3 /* RandomPersonAPIModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -295,6 +294,15 @@
 				C47A71D22B8B3AB70080FA04 /* SideMenuRowView.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		C4EDB0A52B94B38D007DEE3B /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C4EDB0952B90B003007DEE3B /* LocationManager.swift */,
+				C4EDB09B2B92177C007DEE3B /* AudioPlayer.swift */,
+			);
+			path = Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -405,9 +413,9 @@
 				36FEE54C2B876C60001DBDE4 /* SwipeGestureView.swift in Sources */,
 				367AC7A72B8D1F5B000BCE8E /* MapView.swift in Sources */,
 				C47A71CE2B8B33390080FA04 /* SideMenuView.swift in Sources */,
-				3612CDC72B8D105700C237B3 /* TinderButtons.swift in Sources */,
+				3612CDC72B8D105700C237B3 /* TinderButtonsView.swift in Sources */,
 				C47A71D52B8B3B9E0080FA04 /* MenuOptionModel.swift in Sources */,
-				3612CDC02B8D077600C237B3 /* RandomPersonAPI.swift in Sources */,
+				3612CDC02B8D077600C237B3 /* RandomPersonAPIModel.swift in Sources */,
 				3612CDC92B8D114400C237B3 /* HeaderView.swift in Sources */,
 				C43A44AD2B8398F6004CE560 /* InputView.swift in Sources */,
 				C47A71D32B8B3AB70080FA04 /* SideMenuRowView.swift in Sources */,

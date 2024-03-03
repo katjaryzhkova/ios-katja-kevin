@@ -1,36 +1,42 @@
 import SwiftUI
 
-struct SwipeGestureView<Content: View>: View {
-    let content: Content
-    let maxIndex: Int
+/**
+ A swipable cat profile picture.
+ */
+struct SwipeGestureView: View {
+    /**
+     The currently displayed cat profile.
+     */
+    @ObservedObject var cardViewModel: CardViewModel
     
-    @Binding var currentIndex: Int
+    /**
+     How far the image has currently been swiped.
+     */
     @State private var offset: CGSize = .zero
     
-    init(currentIndex: Binding<Int>, maxIndex: Int, @ViewBuilder content: () -> Content) {
-        self.content = content()
-        self._currentIndex = currentIndex
-        self.maxIndex = maxIndex
-    }
+    /**
+     How far the profile has to be swiped for the action to be confirmed.
+     */
+    private let threshold: CGFloat = 80
     
     var body: some View {
-        content
+        CardView(viewModel: cardViewModel)
             .offset(offset)
             .gesture(
                 DragGesture()
                     .onChanged { value in
-                        offset = value.translation
+                        offset.width = value.translation.width
                     }
                     .onEnded { value in
                         withAnimation {
-                            let threshold: CGFloat = 100
-                            if offset.width > threshold && currentIndex > 0 {
-                                currentIndex -= 1
+                            if offset.width > threshold {
+                                cardViewModel.newCat()
                                 AudioPlayer.playDislikeSound()
-                            } else if offset.width < -threshold && currentIndex < maxIndex {
-                                currentIndex += 1
+                            } else if offset.width < -threshold {
+                                cardViewModel.newCat()
                                 AudioPlayer.playLikeSound()
                             }
+                            
                             offset = .zero
                         }
                     }

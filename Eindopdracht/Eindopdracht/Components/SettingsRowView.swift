@@ -1,8 +1,22 @@
 import SwiftUI
 
+/**
+ The label displayed for rows in the profile page.
+ */
 struct SettingsRowView: View {
+    /**
+     The name of the SF Symbol displayed before the label
+     */
     let imageName: String
+    
+    /**
+     The label's text
+     */
     let title: String
+    
+    /**
+     The color which is applied to the symbol
+     */
     let tintColor: Color
     
     var body: some View {

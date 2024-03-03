@@ -1,10 +1,27 @@
 import Foundation
 
+/**
+ This structure defines an identifiable user.
+ */
 struct User: Identifiable, Codable {
+    /**
+     The user's id.
+     */
     let id: String
+    
+    /**
+     The user's first and last name.
+     */
     let fullName: String
+    
+    /**
+     The user's email address.
+     */
     let email: String
     
+    /**
+     The user's initials which are computed from the full name.
+     */
     var initials: String {
         let formatter = PersonNameComponentsFormatter()
         if let components = formatter.personNameComponents(from: fullName) {
@@ -17,5 +34,8 @@ struct User: Identifiable, Codable {
 }
 
 extension User {
-    static var MOCK_USER = User(id: NSUUID().uuidString, fullName: "Test Test", email: "test@gmail.com")
+    /**
+     A placeholder user used for previews.
+     */
+    static var mockUser = User(id: NSUUID().uuidString, fullName: "Test Test", email: "test@gmail.com")
 }
