@@ -1,59 +1,59 @@
 import SwiftUI
 
+/**
+ The main application view composed of a cat's profile as well as the
+ three interaction buttons (like, dislike, and show location).
+ */
 struct HomescreenView: View {
-    let names = ["John Doe", "Alice", "Bob", "Emily", "David"]
-    @State private var currentIndex: Int = 0
+    /**
+     Used to determine whether the phone is in landscape or portrait mode.
+     */
+    @Environment(\.verticalSizeClass) var sizeClass: UserInterfaceSizeClass?
+    
+    /**
+     The currently displayed cat profile.
+     */
+    @StateObject var cardViewModel = CardViewModel()
+        
+    /**
+     Whether the map is currently being displayed or not.
+     */
+    @State private var isShowingMapSheet = false
     
     var body: some View {
-        VStack {
-            HStack(spacing: 8) {
-                Image("cat-icon")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 100, height: 120)
-                Text("Cat Tinder")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.black)
-            }
-                .cornerRadius(20)
-                .shadow(radius: 5)
-            ZStack {
-                SwipeGestureView(currentIndex: $currentIndex, maxIndex: names.count - 1) {
-                    ForEach(names.indices, id: \.self) { index in
-                        CardView(name: names[index], age: Int.random(in: 0...20), viewModel: CardViewModel())
-                            .opacity(index == currentIndex ? 1 : 0)
-                    }
+        // Portrait mode
+        if sizeClass == .regular {
+            VStack {
+                HeaderView()
+                ZStack {
+                    SwipeGestureView(cardViewModel: cardViewModel)
                 }
+                    .padding(.horizontal, 16)
+                    .padding(.bottom, 40)
+                HStack {
+                    TinderButtonsView(isShowingMapSheet: $isShowingMapSheet, cardViewModel: cardViewModel)
+                        .padding(.bottom, 20)
+                }
+                    .padding(.bottom, 20)
             }
-            .padding(.horizontal, 16)
-            .padding(.bottom, 40)
+        // Landscape mode
+        } else {
             HStack {
-                Spacer()
-                Button(action: {
-                    withAnimation {
-                        currentIndex = (currentIndex + 1) % names.count
-                    }
-                }) {
-                    Image(systemName: "heart.fill")
-                        .font(.system(size: 60))
-                        .foregroundColor(.red)
-                        .padding()
+                HStack(spacing: 8) {
+                    Image("cat-icon")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 100, height: 120)
                 }
-                Button(action: {
-                    withAnimation {
-                        currentIndex = (currentIndex - 1 + names.count) % names.count
-                    }
-                }) {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 60))
-                        .foregroundColor(.blue)
-                        .padding()
+                    .cornerRadius(20)
+                    .shadow(radius: 5)
+                ZStack {
+                    SwipeGestureView(cardViewModel: cardViewModel)
                 }
-                
-                Spacer()
+                VStack {
+                    TinderButtonsView(isShowingMapSheet: $isShowingMapSheet, cardViewModel: cardViewModel)
+                }
             }
-            .padding(.bottom, 20)
         }
     }
 }

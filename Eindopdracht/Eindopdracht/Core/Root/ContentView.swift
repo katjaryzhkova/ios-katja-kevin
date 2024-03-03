@@ -1,8 +1,22 @@
 import SwiftUI
 
+/**
+ The application's root view.
+ */
 struct ContentView: View {
+    /**
+     Is the navigation menu currently displayed?
+     */
     @State private var showMenu = false
+    
+    /**
+     The currently open view.
+     */
     @State private var selectedTab = 0
+    
+    /**
+     The ``AuthViewModel`` is responsible for keeping track of the currently signed in user.
+     */
     @EnvironmentObject var viewModel: AuthViewModel
     
     var body: some View {
@@ -26,6 +40,7 @@ struct ContentView: View {
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button(action: {
+                            AudioPlayer.playGenericButtonSound()
                             showMenu.toggle()
                         }, label: {
                             Image(systemName: "line.3.horizontal")
@@ -41,7 +56,7 @@ struct ContentView: View {
 
 #Preview {
     let auth = AuthViewModel()
-    auth.currentUser = User(id: "1", fullName: "Test Test", email: "test@gmail.com")
+    auth.currentUser = User.mockUser
     return ContentView()
         .environmentObject(auth)
 }

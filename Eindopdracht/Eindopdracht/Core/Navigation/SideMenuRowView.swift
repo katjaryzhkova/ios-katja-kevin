@@ -1,9 +1,25 @@
 import SwiftUI
 
+/**
+ An option within the navigation side bar.
+ */
 struct SideMenuRowView: View {
+    /**
+     The option this row represents.
+     */
     let option: SideMenuOptionModel
+    
+    /**
+     The option that is currently selected. This is used to determine
+     whether this row is currently selected which is ultimately used
+     to decide whether this row should be highlighted or not.
+     */
     @Binding var selectedOption: SideMenuOptionModel?
     
+    /**
+     Whether this row is currently selected or not. This is used to
+     decide whether this row should be highlighted or not.
+     */
     private var isSelected: Bool {
         return selectedOption == option
     }

@@ -1,8 +1,22 @@
 import SwiftUI
 
+/**
+ The side menu which is used for navigating through the app's various views.
+ */
 struct SideMenuView: View {
+    /**
+     Whether the side menu is currently open or closed.
+     */
     @Binding var isShowing: Bool
+    
+    /**
+     The ID of the currently selected view.
+     */
     @Binding var selectedTab: Int
+    
+    /**
+     The currently selected view.
+     */
     @State private var selectedOption: SideMenuOptionModel?
     
     var body: some View {
@@ -20,6 +34,7 @@ struct SideMenuView: View {
                         VStack {
                             ForEach(SideMenuOptionModel.allCases) { option in
                                 Button(action: {
+                                    AudioPlayer.playGenericButtonSound()
                                     onOptionTapped(option)
                                 }, label: {
                                     SideMenuRowView(option: option, selectedOption: $selectedOption)
@@ -41,6 +56,9 @@ struct SideMenuView: View {
         .animation(.easeInOut, value: isShowing)
     }
     
+    /**
+     Selects a view from the side menu's options and navigates to it.
+     */
     private func onOptionTapped(_ option: SideMenuOptionModel) {
         selectedOption = option
         selectedTab = option.rawValue
@@ -49,5 +67,8 @@ struct SideMenuView: View {
 }
 
 #Preview {
-    SideMenuView(isShowing: .constant(true), selectedTab: .constant(0))
+    let auth = AuthViewModel()
+    auth.currentUser = User.mockUser
+    return SideMenuView(isShowing: .constant(true), selectedTab: .constant(0))
+        .environmentObject(auth)
 }

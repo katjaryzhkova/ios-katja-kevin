@@ -1,9 +1,22 @@
 import Foundation
 
+/**
+ This enumeration contains all links from the navigation menu.
+ */
 enum SideMenuOptionModel: Int, CaseIterable {
+    /**
+     The tinder view.
+     */
     case home
+    
+    /**
+     The profile view.
+     */
     case profile
     
+    /**
+     The navigation link's title.
+     */
     var title: String {
         switch self {
         case .home:
@@ -13,6 +26,9 @@ enum SideMenuOptionModel: Int, CaseIterable {
         }
     }
     
+    /**
+     The navigation link's SF Symbol.
+     */
     var systemImageName: String {
         switch self {
         case .home:
